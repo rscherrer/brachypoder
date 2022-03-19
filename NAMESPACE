@@ -2,4 +2,6 @@
 
 export(read_binary)
 export(read_data)
+export(read_individual_data)
+export(read_parameters)
 export(sim2tbl)

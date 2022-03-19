@@ -35,7 +35,6 @@ Do not provide the extension of the data files in \code{variables} (".dat").
 root <- system.file("extdata", "sim-example", package = "brachypoder")
 read_data(root, "time")
 read_data(root, c("time", "popsize"))
-read_data(root, c("time", "individuals"), ncol = c(1, 3))
 
 }
 \seealso{
