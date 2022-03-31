@@ -82,9 +82,52 @@ read_individual_data(root)
 
 This data set contains all the relevant information for each individual saved in the simulation. Because this function has only one use case (i.e. it is not designed to be flexible, unlike `read_data`) it gives the output tibble specific column names.
 
+Same, we provide a function that directly reads and formats the data from the `traitmeans.dat` dataset, which contain the mean trait value for each trait in each patch of each deme, at each saved generation.
+
+```{r}
+read_trait_mean_data(root)
+```
+
 Besides the functions to read simulation data, one may want to read back the parameters that were used in a given simulation. To do this, use:
 
 ```{r}
 pars <- read_parameters(root)
 pars[1:5] # just a few parameters
+```
+
+Once the data properly loaded and reshaped, they can be plotting using the usual tools available in R. Using `ggplot2`, for example:
+
+```{r}
+
+library(tidyverse)
+
+# Read the proportion of good patches
+pgood <- read_parameters(root)$pgood
+pgood <- pgood[-1]
+
+# Read trait means per patch per deme
+data <- read_trait_mean_data(root)
+data$patch <- as.logical(data$patch)
+
+# Relabel
+data <- data %>% mutate(patch_lab = if_else(patch, "Facilitated", "Unfacilitated"))
+
+# Add information about the coverage in good patches
+data <- data %>%
+  group_by(deme) %>%
+  nest() %>%
+  ungroup() %>%
+  mutate(pgood = pgood) %>%
+  unnest(data) %>%
+  mutate(patch_size = if_else(patch, pgood, 1 - pgood))
+
+# Plot trait z through time
+data %>%
+  ggplot(aes(x = time, y = z, group = interaction(deme, patch), color = patch_lab, alpha = patch_size)) +
+  geom_line() +
+  xlab("Time (generations)") +
+  ylab("Mean trait value") +
+  labs(color = NULL, alpha = "% cover") +
+  scale_color_manual(values = c("gray10", "gray60"))
+
 ```

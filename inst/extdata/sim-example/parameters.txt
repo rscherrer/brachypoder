@@ -1,28 +1,26 @@
 type 1
-popsize 100
+popsize 10
 pgood 5 0.8 0.6 0.5 0.3 0.1
-maxgrowths 1 3
-zopts 3 1
-zwidths 4 1
+maxgrowths 2 3
+zwidths 1 2
 capacities 10000 100
-stress 3 0
-growth 3
+stress 4 0
 steep 2
 dispersal 0.1
-mutation 0.001
+mutation 0.0001
 nchrom 1
-nloci 20
+nloci 50
 effect 0.1
 xmax 5
-ymax 3
+ymax 5
 tradeoff 1
 selfing 0.95
-recombination 3
+recombination 1
 tend 10000
 tsave 100
 loadarch 0
 savepars 1
 savelog 0
 savearch 1
-talkative 0
+talkative 1
 choose 0
