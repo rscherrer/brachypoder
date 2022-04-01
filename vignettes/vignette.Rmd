@@ -42,9 +42,9 @@ If we have a look at what is inside this folder,
 list.files(root)
 ```
 
-we see a few `.dat` files. These are the files that contain the data saved from one simulation. Different variables are saved in different files, e.g. `popsize.dat` contains the total population size at every time point save. See the repository of \textcolor{blue}{`brachypode`} for details.
+we see a few `.dat` files. These are the files that contain the data saved from one simulation. Different variables are saved in different files, e.g. `popsize.dat` contains the total population size at every time point saved. See the repository of `\textcolor{blue}{brachypode}` for details.
 
-Each data file contains data on different resolutions. For example, `individuals.dat` contains five values per individual and covers all individuals of all the time points saved. The data files are saved in binary format, which is one-dimensional. This means that the arrays of saved values may have to be reshaped in order to be assemble into a dataset that is workable within R. This is where the `read_data` function comes in.
+Each data file contains data with different resolutions. For example, `individuals.dat` contains five values per individual and covers all individuals of all the time points saved. The data files are saved in binary format, which is one-dimensional. This means that the arrays of saved values may have to be reshaped in order to be assembled into a data set that is workable within R. This is where the `read_data` function comes in.
 
 The function `read_data` is the core function of the package. It takes the location of the simulation data as input, the variables to read, and rules that determine how each variable should be reshaped. For example,
 
@@ -58,31 +58,31 @@ reads the binary data in `popsize.dat` back into numbers and places them into a 
 read_data(root, c("time", "popsize"))
 ```
  
- we get multiple variables (`time.dat` and `popsize.dat`) read and assembled together. Now, these two variables both have one value saved every saved time point, and so have the same number of values. When the variables to read have different dimensions (e.g. `patchsizes.dat` contains one value per patch, per site, per time point), we use the `ncols` argument:
+we get multiple variables (`time.dat` and `popsize.dat`) read and assembled together. Now, these two variables both have one value saved every saved time point, and so have the same number of values. When the variables to read have different dimensions (e.g. `patchsizes.dat` contains one value per patch, per site, per time point), we use the `ncols` argument:
 
 ```{r}
 read_data(root, c("time", "patchsizes"), ncols = c(1, 10))
 ```
 
-which splits the `patchsizes` data into 10 columns, and so its number of rows becomes equal to the number of time points in `time`, with which they can be attached. The columns in the output data are named after their respective data file or origin, with numbers appended for each column.
+which splits the `patchsizes` data into 10 columns, and so its number of rows becomes equal to the number of time points in `time` (the 1 tells the function not to split that column), with which they can be attached. The columns in the output data are named after their respective data file or origin, with numbers appended for each column.
 
-In some cases some columns may need to be duplicated instead of split into multiple columns. For example,
+In some cases some columns may need to be duplicated instead of split into multiple columns. Then, we use negative numbers in `ncols`. For example,
 
 ```{r}
 read_data(root, c("time", "patchsizes"), ncols = c(-10, 1))
 ```
 
-reads the same data as the previous chunk, but in a "longer" format, where each number of individuals is taken as an observation and therefore as a row. And so here, `patchsizes` was kept in a single column but each value in `time` was duplicated as many times as there are patches and sites.
+reads the same data as the previous chunk, but in a "longer" format, where each number of individuals is taken as an observation and therefore as a row. And so here, `patchsizes` was kept in a single column but each value in `time` was duplicated as many times as there are patches and sites (so 10 times).
 
-Some use cases may be more intricate. For example, reading `individuals.dat` and assigning each individual its own time point requires to know how many individuals there are at each time point. For this we provide a wrapper around `read_data` that reads `individuals.dat`, `time.dat` and `popsize.dat` to perform this task:
+Some use-cases may be more intricate. For example, reading `individuals.dat` and assigning each individual its own time point requires to know how many individuals there are at each time point. For this we provide a wrapper around `read_data` that reads `individuals.dat`, `time.dat` and `popsize.dat` to perform this task:
 
 ```{r}
 read_individual_data(root)
 ```
 
-This data set contains all the relevant information for each individual saved in the simulation. Because this function has only one use case (i.e. it is not designed to be flexible, unlike `read_data`) it gives the output tibble specific column names.
+This data set contains all the relevant information for each individual saved in the simulation. Because this function has only one use-case (i.e. it is not designed to be flexible, unlike `read_data`) it gives the output tibble specific column names.
 
-Same, we provide a function that directly reads and formats the data from the `traitmeans.dat` dataset, which contain the mean trait value for each trait in each patch of each deme, at each saved generation.
+Same, we provide a function that directly reads and formats the data from the `traitmeans.dat` data set, which contains the mean trait value for each trait in each patch of each site, at each saved generation.
 
 ```{r}
 read_trait_mean_data(root)
@@ -95,7 +95,7 @@ pars <- read_parameters(root)
 pars[1:5] # just a few parameters
 ```
 
-Once the data properly loaded and reshaped, they can be plotting using the usual tools available in R. Using `ggplot2`, for example:
+Once the data are properly loaded and reshaped, they can be plotting using the usual tools available in R. Using `ggplot2`, for example:
 
 ```{r}
 
