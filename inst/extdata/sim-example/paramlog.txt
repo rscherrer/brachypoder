@@ -13,12 +13,12 @@ nloci 50
 effect 0.1
 xmax 5
 ymax 5
-tradeoff 1
+tradeoff 0.005
 selfing 0.95
 recombination 1
 tend 10000
 tsave 100
-seed 1650975476423641189
+seed 1650988987279661494
 loadarch 0
 savepars 1
 savelog 0
