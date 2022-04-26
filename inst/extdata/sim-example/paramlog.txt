@@ -18,7 +18,7 @@ selfing 0.95
 recombination 1
 tend 10000
 tsave 100
-seed 1648758215655103654
+seed 1650975476423641189
 loadarch 0
 savepars 1
 savelog 0

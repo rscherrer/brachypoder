@@ -24,24 +24,24 @@ test_that("Read two variables and split one", {
 
 test_that("Read multiple variables and split some", {
 
-  variables <- c("time", "popsize", "demesizes", "patchsizes")
-  data <- read_data(root, variables = variables, ncols = c(1, 1, 5, 10))
-  expect_equal(ncol(data), 17)
+  variables <- c("time", "popsize", "patchsizes")
+  data <- read_data(root, variables = variables, ncols = c(1, 1, 10))
+  expect_equal(ncol(data), 12)
 
 })
 
 test_that("Read multiple variables and duplicate one", {
 
-  variables <- c("time", "demesizes")
-  data <- read_data(root, variables = variables, ncols = c(-5, 1))
+  variables <- c("time", "patchsizes")
+  data <- read_data(root, variables = variables, ncols = c(-10, 1))
   expect_equal(ncol(data), 2)
 
 })
 
 test_that("Read multiple variables and duplicate several", {
 
-  variables <- c("time", "popsize", "demesizes")
-  data <- read_data(root, variables = variables, ncols = c(-5, -5, 1))
+  variables <- c("time", "popsize", "patchsizes")
+  data <- read_data(root, variables = variables, ncols = c(-10, -10, 1))
   expect_equal(ncol(data), 3)
 
 })
