@@ -88,6 +88,12 @@ Same, we provide a function that directly reads and formats the data from the `t
 read_trait_mean_data(root)
 ```
 
+And, similar to that, there is a wrapper function to directly read and format the data from the `patchsizes.dat` file:
+
+```{r}
+read_patch_size_data(root)
+```
+
 Besides the functions to read simulation data, one may want to read back the parameters that were used in a given simulation. To do this, use:
 
 ```{r}
