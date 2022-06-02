@@ -1,7 +1,7 @@
 #' Read mean trait data
 #'
 #' This function is a wrapper around \code{read_data} tailored at reading the
-#' output file "meantraits.dat" into a tibble with one row per deme and per patch
+#' output file "traitmeans.dat" into a tibble with one row per deme and per patch
 #' and one column per trait.
 #'
 #' @param root Path to the simulation folder
