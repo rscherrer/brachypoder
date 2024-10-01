@@ -1,5 +1,5 @@
 ---
-title: "vignette"
+title: "Read brachypode simulation data in R"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{vignette}
