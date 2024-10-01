@@ -21,7 +21,7 @@
 read_individual_data <- function(root) {
 
   # Read the data and split them into the corresponding columns
-  data <- read_data(root, variables = "individuals", ncols = 5)
+  data <- read_data(root, variables = "individuals", ncols = 3)
 
   # Read time points
   timepoints <- read_binary(paste0(root, "/time.dat"))
@@ -34,7 +34,10 @@ read_individual_data <- function(root) {
   data <- data[, c(ncol(data), seq(ncol(data) - 1))]
 
   # Rename the columns
-  names(data) <- c("time", "deme", "patch", "x", "y", "z")
+  names(data) <- c("time", "deme", "patch", "x")
+
+  # Increment the deme index
+  data$deme <- data$deme + 1
 
   return(data)
 

@@ -1,27 +1,26 @@
-type 1
 popsize 10
 pgood 5 0.8 0.6 0.5 0.3 0.1
-maxgrowths 2 3
-zwidths 1 2
-capacities 10000 100
+capacities 100 10000
 stress 4 0
+maxgrowth 4
 steep 2
-dispersal 0.1
+shortrange 0.3
+longrange 0.01
 mutation 0.0001
 nchrom 1
 nloci 50
 effect 0.1
-xmax 5
-ymax 5
-tradeoff 0.005
+allfreq 0.5
+tradeoff 0.1
 selfing 0.95
 recombination 1
-tend 10000
-tsave 100
-seed 1650988987279661494
+tend 100
+tsave 20
+seed 1661437193726380232
+sow 1
 loadarch 0
 savepars 1
 savelog 0
 savearch 1
-talkative 1
+talkative 0
 choose 0

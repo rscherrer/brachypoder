@@ -8,4 +8,4 @@ To install the package, use in your R session:
 devtools::install_github("rscherrer/brachypoder")
 ```
 
-From then on, please refer to the vignette in `vignette.pdf` for examples of how to use the package.
+From then on, please refer to the vignette for examples of how to use the package.

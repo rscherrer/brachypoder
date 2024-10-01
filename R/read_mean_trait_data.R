@@ -23,7 +23,7 @@ read_trait_mean_data <- function(root) {
   ndemes <- length(pars$pgood) - 1
 
   # Read the data and split them into the corresponding columns
-  data <- read_data(root, variables = "traitmeans", ncols = 3)
+  data <- read_data(root, variables = "traitmeans", ncols = 1)
 
   data$patch <- rep(0:1, nrow(data) / 2)
   ntimepoints <- nrow(data) / (ndemes * 2)
@@ -34,10 +34,10 @@ read_trait_mean_data <- function(root) {
   data$time <- rep(timepoints, each = ndemes * 2)
 
   # Reorder columns
-  data <- data[, c(6, 5, 4, 1, 2, 3)]
+  data <- data[, c(4, 3, 2, 1)]
 
   # Rename the columns
-  names(data) <- c("time", "deme", "patch", "x", "y", "z")
+  names(data) <- c("time", "deme", "patch", "x")
 
   return(data)
 

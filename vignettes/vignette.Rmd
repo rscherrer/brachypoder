@@ -1,11 +1,10 @@
 ---
 title: "brachypoder"
-output: 
+output:
+  html_document:
+    df_print: paged
   pdf_document: default
-vignette: >
-  %\VignetteIndexEntry{vignette}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+vignette: "%\\VignetteIndexEntry{vignette} %\\VignetteEngine{knitr::rmarkdown} %\\VignetteEncoding{UTF-8}\n"
 ---
 
 ```{r, include = FALSE}
@@ -15,13 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This is the vignette of `brachypoder`, an R package developed to help read and assemble the data simulated by the [`brachypode`](https://github.com/rscherrer/brachypode) program.
-
-To install the package from GitHub, use:
-
-```{r, eval=FALSE}
-devtools::install_github("rscherrer/brachypoder")
-```
+This is the vignette of `brachypoder`, an R package developed to help read and assemble the data simulated by the [`brachypode`](https://github.com/rscherrer/brachypode) program. See the online help [page](https://github.com/rscherrer/brachypoder) for how to install the package.
 
 To load the package, use:
 
@@ -101,7 +94,7 @@ pars <- read_parameters(root)
 pars[1:5] # just a few parameters
 ```
 
-Once the data are properly loaded and reshaped, they can be plotting using the usual tools available in R. Using `ggplot2`, for example:
+Once the data are properly loaded and reshaped, they can be plotted using the usual tools available in R. Using `ggplot2`, for example:
 
 ```{r}
 
