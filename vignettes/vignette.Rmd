@@ -1,10 +1,10 @@
 ---
-title: "brachypoder"
-output:
-  html_document:
-    df_print: paged
-  pdf_document: default
-vignette: "%\\VignetteIndexEntry{vignette} %\\VignetteEngine{knitr::rmarkdown} %\\VignetteEncoding{UTF-8}\n"
+title: "vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -96,8 +96,7 @@ pars[1:5] # just a few parameters
 
 Once the data are properly loaded and reshaped, they can be plotted using the usual tools available in R. Using `ggplot2`, for example:
 
-```{r}
-
+```{r, fig.width = 5, fig.height = 3}
 library(tidyverse)
 
 # Read the proportion of good patches
@@ -120,9 +119,9 @@ data <- data %>%
   unnest(data) %>%
   mutate(patch_size = if_else(patch, pgood, 1 - pgood))
 
-# Plot trait z through time
+# Plot trait through time
 data %>%
-  ggplot(aes(x = time, y = z, group = interaction(deme, patch), color = patch_lab, alpha = patch_size)) +
+  ggplot(aes(x = time, y = x, group = interaction(deme, patch), color = patch_lab, alpha = patch_size)) +
   geom_line() +
   xlab("Time (generations)") +
   ylab("Mean trait value") +
