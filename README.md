@@ -5,7 +5,7 @@ An R package to read and analyze the simulation data from [brachypode](https://g
 To install the package, use in your R session:
 
 ```{r}
-devtools::install_github("rscherrer/brachypoder", buid_vignettes = TRUE)
+devtools::install_github("rscherrer/brachypoder", build_vignettes = TRUE)
 ```
 
 From then on, please refer to the vignette for examples of how to use the package. To view vignette, either use
