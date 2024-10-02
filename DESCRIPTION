@@ -1,7 +1,7 @@
 Package: brachypoder
 Type: Package
 Title: Reading Brachypode Simulations
-Version: 0.1.0
+Version: 1.0
 Author: Raphael Scherrer
 Maintainer: Raphael Scherrer <r.scherrer@rug.nl> <raphael.scherrer@evobio.eu>
 Description: A series of R functions to read the binary output of the brachypode simulations into workable data tables.
